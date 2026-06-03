@@ -17,7 +17,7 @@ An Android demonstration application showcasing the multimodal Text-to-Speech (T
   - **Female voice** (`Kore`)
   - **Male voice** (`Puck`)
 * **Over 20 Regional Dialects**:
-  - **English**: London, Inverness (Scotland), Galway (Ireland), Bostonian, NYC Mobster, Texas Drawl, California Surfer, Adelaide (Australia), Taiwanese English, Japanese English.
+  - **English**: London, Inverness (Scotland), Galway (Ireland), Bostonian, NYC Mobster, Texas Drawl, California Surfer, Adelaide (Australia), Taiwanese English, Japanese English, Shakespearean Actor.
   - **Spanish**: Madrid (Castilian), Barcelona (Catalan substrate), Mexico.
   - **German**: Berlin (Berlinerisch), Vienna (Wienerisch).
   - **French**: Paris (Standard metropolitan), Quebec (Québécois).
