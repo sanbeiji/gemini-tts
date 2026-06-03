@@ -73,6 +73,11 @@ object DialectData {
                     id = "en_japanese",
                     name = "Japanese English",
                     prompt = "[Voice Style: Speak English with a distinct, natural Japanese accent.] Render English vowels and consonants shifted toward Japanese phonology (e.g. slight epenthetic vowels at the ends of words, simplified consonant clusters, and a flat pitch-accent influenced rhythm), spoken politely and clearly."
+                ),
+                Dialect(
+                    id = "en_shakespearean",
+                    name = "Shakespearean Actor",
+                    prompt = "[Voice Style: Speak in the style of an actor performing in a dramatic Shakespearean play. The speech should be highly emphatic, theatrical, and slightly exaggerated, delivered with a strong, projecting stage voice, rich Received Pronunciation (RP) vowels, and a dramatic, grand cadence.]"
                 )
             )
         ),
