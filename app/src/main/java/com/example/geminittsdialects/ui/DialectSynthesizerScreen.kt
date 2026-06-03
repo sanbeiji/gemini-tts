@@ -219,23 +219,17 @@ fun DialectSynthesizerScreen(
                     Spacer(modifier = Modifier.height(10.dp))
                     
                     val languages = DialectData.languages
-                    SingleChoiceSegmentedButtonRow(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        languages.forEachIndexed { index, language ->
-                            val isSelected = selectedLanguage.id == language.id
-                            val displayName = if (language.id == "zh") "Chinese" else language.name
-                            SegmentedButton(
-                                shape = SegmentedButtonDefaults.itemShape(index = index, count = languages.size),
-                                onClick = { viewModel.onLanguageSelected(language) },
-                                selected = isSelected,
-                                icon = { SegmentedButtonDefaults.Icon(active = isSelected) }
-                            ) {
-                                Text(
-                                    text = displayName,
-                                    maxLines = 1,
-                                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-                                    fontSize = 12.sp
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                        FlowRow(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            languages.forEach { language ->
+                                val isSelected = selectedLanguage.id == language.id
+                                FilterChip(
+                                    selected = isSelected,
+                                    onClick = { viewModel.onLanguageSelected(language) },
+                                    label = { Text(language.name) }
                                 )
                             }
                         }
