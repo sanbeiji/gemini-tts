@@ -61,7 +61,7 @@ object DialectData {
                 ),
                 Dialect(
                     id = "en_australia",
-                    name = "Adelaide, Australia",
+                    name = "Adelaide",
                     prompt = "[Voice Style: Speak in a standard South Australian Adelaide accent.] Deliver with slightly more rounded, prestigious British-leaning vowels than eastern Australia, a subtle rising inflection at the end of sentences, and casual Australian cadence."
                 ),
                 Dialect(
@@ -144,12 +144,12 @@ object DialectData {
             dialects = listOf(
                 Dialect(
                     id = "zh_beijing",
-                    name = "Beijing Mandarin",
+                    name = "Beijing",
                     prompt = "[Voice Style: Speak in standard Mandarin with a classic Beijing accent (北京話).] Deliver with frequent curl-tongue erhua (兒化音) endings, relaxed and blended consonants, and a fast, confident, northern Chinese cadence."
                 ),
                 Dialect(
                     id = "zh_shanghai",
-                    name = "Shanghai Mandarin",
+                    name = "Shanghai",
                     prompt = "[Voice Style: Speak Mandarin with a Shanghainese accent.] Deliver with a softer, slightly voiced consonant quality, vowels shifted toward Wu language phonology, and the distinctive rise-fall intonation of Shanghai speakers."
                 ),
                 Dialect(
@@ -159,17 +159,17 @@ object DialectData {
                 ),
                 Dialect(
                     id = "zh_taiwan_standard",
-                    name = "Taiwanese Mandarin",
+                    name = "Standard",
                     prompt = "[Voice Style: Speak in a natural, standard, clear reading style.]\nRead in standard, clear Taiwanese Mandarin (都會風格台北/台灣腔) as heard in public announcements (like the Taipei MRT) or urban professional settings.\n- Speak in a natural, clean, moderately fast, modern Taiwanese tempo.\n- Retroflex sounds (zh, ch, sh) are relaxed and naturally simplified, avoiding any dry retroflex friction or thick northern Beijing acoustics. No \"er\" (no 兒化音).\n- Render neutral tones (輕聲) in accordance with general urban Taiwanese Mandarin usage (typically pronounced as lighter full tones rather than clipped neutral vowels).\n- Deliver with a clean, melodic, polite, and professional Taiwanese tone."
                 ),
                 Dialect(
                     id = "zh_taiwan_southern",
-                    name = "Taiwanese Southern Accent",
+                    name = "Southern",
                     prompt = "[Voice Style: Speak gently, softly, and reassuringly, at a relaxed pace with extreme warmth.]\nRead in a warm, relaxed, authentic Southern Taiwanese Mandarin (台灣國語) regional accent (popular in Tainan, Kaohsiung, and Pingtung).\n- Speak with a friendly, local Taiwanese cadence and relaxed mouth positioning.\n- Strictly avoid Beijing-style speech: absolutely no curl-tongue \"er\" (no 兒化音) and do not retroflex sounds like zh, ch, sh (pronounce them shifted toward z, c, s, e.g. 知道 sounds like zīdào, 是 sounds like sì).\n- Do not suppress tones into neutral short tones (輕聲), pronounce grammatically light words with their full traditional Taiwanese Mandarin tones (e.g. 舒服 is shūfú, 先生 is xiānshēng).\n- Keep any natural sentence-final particles from Taiwan (like '啦', '齁', '喔', '欸') represented with authentic, comfortable, musical southern cadence."
                 ),
                 Dialect(
                     id = "zh_taiwan_heavy_southern",
-                    name = "Taiwanese Southern Heavy + Minnan",
+                    name = "Heavy Minnan",
                     prompt = "[Voice Style: Speak extremely casually, off-the-cuff, like chatting with a close family member or childhood friend.]\nRead in a local, very down-to-earth, thick Southern Taiwanese Mandarin colloquial style (重度南部腔台灣國語) with strong Taiwanese (Minnan/Hokkien) substrate.\n- Sound like a friendly neighbor from Tainan or Kaohsiung speaking casual Mandarin.\n- Strongly dentalize retroflexes (zh, ch, sh -> z, c, s, e.g., 船 sounds like cuán, 睡 sounds like suì).\n- Use Minnan speech substrate pitch and rhythm. Syllable-final nasals \"eng\" and \"en\" can merge with \"ing\" and \"in\", or open slightly (e.g. 朋友 sounds like píngyǒu or péng-ǐou).\n- Do not use neutral/light tones (輕聲); give everything comfortable, rich Taiwanese tones.\n- If natural, blend f and h sounds gently (e.g., 飯 fàn sounds like huàn, 發生 fāshēng sounds like huāshēng).\n- Keep the cadence relaxed, friendly, and expressive, showing regional southern warmth."
                 )
             )
