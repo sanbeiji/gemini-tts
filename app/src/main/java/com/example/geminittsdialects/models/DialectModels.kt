@@ -139,7 +139,7 @@ object DialectData {
         ),
         Language(
             id = "zh",
-            name = "Chinese (Mandarin / Sinitic)",
+            name = "Chinese",
             defaultText = "哈囉，我的朋友！今天的天氣真好，我們一起出去散散步吧。",
             dialects = listOf(
                 Dialect(
