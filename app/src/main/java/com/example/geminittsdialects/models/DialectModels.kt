@@ -154,7 +154,7 @@ object DialectData {
                 ),
                 Dialect(
                     id = "zh_cantonese",
-                    name = "Cantonese",
+                    name = "Hong Kong",
                     prompt = "[Voice Style: Read the text in Cantonese (廣東話/粵語).] Pronounce the characters using standard Cantonese readings (with 6 or 9 tones), distinct final consonants (-p, -t, -k, -m, -n, -ng), and authentic Hong Kong/Guangzhou Cantonese speech flow."
                 ),
                 Dialect(
