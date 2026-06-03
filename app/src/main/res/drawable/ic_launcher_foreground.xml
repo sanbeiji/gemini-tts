@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Bubble Outline -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M54,28 C39.6,28 28,37 28,48 C28,54.2 31.2,59.8 36.3,63.5 L36.3,73 L45.8,67.3 C48.4,67.8 51.1,68 54,68 C68.4,68 80,59 80,48 C80,37 68.4,28 54,28 Z" />
+    <!-- Audio waves inside -->
+    <path
+        android:fillColor="#EC4899"
+        android:pathData="M44,42h4v12h-4z M52,36h4v24h-4z M60,42h4v12h-4z" />
+</vector>

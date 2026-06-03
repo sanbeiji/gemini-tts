@@ -49,11 +49,9 @@ fun DialectSynthesizerScreen(
     var showKeyDialog by remember { mutableStateOf(false) }
     var showInfoDialog by remember { mutableStateOf(false) }
 
-    // If API key is empty, prompt user immediately
+    // Sync the dialog state with the presence of an API key
     LaunchedEffect(userSettings.apiKey) {
-        if (userSettings.apiKey.isBlank()) {
-            showKeyDialog = true
-        }
+        showKeyDialog = userSettings.apiKey.isBlank()
     }
 
     if (showKeyDialog) {
