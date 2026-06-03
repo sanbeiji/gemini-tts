@@ -31,12 +31,12 @@ object DialectData {
                 ),
                 Dialect(
                     id = "en_scotland",
-                    name = "Inverness, Scotland",
+                    name = "Inverness",
                     prompt = "[Voice Style: Speak in a soft, melodic Scottish accent characteristic of Inverness and the Highlands.] Deliver with clear, rolled or tapped 'r's, monophthongal vowels (e.g. 'go' sounds like a pure long o), and a gentle, slightly rising lilt at the ends of sentences."
                 ),
                 Dialect(
                     id = "en_ireland",
-                    name = "Galway, Ireland",
+                    name = "Galway",
                     prompt = "[Voice Style: Speak in a soft, musical West Irish accent from Galway.] Deliver with a rhythmic lilt, softened consonants (like 't' sounding close to 'sh' or 'ts'), and distinct Irish English vowel shifts (e.g., 'film' with a slight extra vowel 'fill-um')."
                 ),
                 Dialect(
@@ -46,7 +46,7 @@ object DialectData {
                 ),
                 Dialect(
                     id = "en_nyc",
-                    name = "NYC mobster",
+                    name = "NYC",
                     prompt = "[Voice Style: Speak in a theatrical, classic New York City / Brooklyn working-class 'mobster' voice.] Speak with a tough, raspy, animated Brooklyn accent, dropping 'r's, shifting 'th' to 'd' or 't' (e.g., 'these' -> 'dese', 'thing' -> 'ting'), and using dramatic NY stress and cadence."
                 ),
                 Dialect(
@@ -56,7 +56,7 @@ object DialectData {
                 ),
                 Dialect(
                     id = "en_surfer",
-                    name = "California surfer",
+                    name = "California",
                     prompt = "[Voice Style: Speak in a highly casual, laid-back California 'surfer dude' voice.] Deliver with a slow, relaxed, drawling cadence, slightly elongated vowels, and enthusiastic, breezy, informal intonation."
                 ),
                 Dialect(
@@ -66,17 +66,17 @@ object DialectData {
                 ),
                 Dialect(
                     id = "en_taiwanese",
-                    name = "Taiwanese English",
+                    name = "Taiwanese",
                     prompt = "[Voice Style: Speak English with a distinct, natural Taiwanese regional accent.] Deliver with slightly shortened vowels, gentle shifts in consonants (e.g., 'th' sounds like 'd' or 's', 'l' and 'r' are relaxed, and word endings are soft), with a polite, melodic Taiwanese rhythm."
                 ),
                 Dialect(
                     id = "en_japanese",
-                    name = "Japanese English",
+                    name = "Japanese",
                     prompt = "[Voice Style: Speak English with a distinct, natural Japanese accent.] Render English vowels and consonants shifted toward Japanese phonology (e.g. slight epenthetic vowels at the ends of words, simplified consonant clusters, and a flat pitch-accent influenced rhythm), spoken politely and clearly."
                 ),
                 Dialect(
                     id = "en_shakespearean",
-                    name = "Shakespearean Actor",
+                    name = "Shakespearean",
                     prompt = "[Voice Style: Speak in the style of an actor performing in a dramatic Shakespearean play. The speech should be highly emphatic, theatrical, and slightly exaggerated, delivered with a strong, projecting stage voice, rich Received Pronunciation (RP) vowels, and a dramatic, grand cadence.]"
                 )
             )
