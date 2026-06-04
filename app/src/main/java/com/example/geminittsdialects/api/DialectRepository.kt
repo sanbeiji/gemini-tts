@@ -59,6 +59,12 @@ class DialectRepository {
                             )
                         )
                     )
+                ),
+                safetySettings = listOf(
+                    SafetySetting("HARM_CATEGORY_HARASSMENT", "BLOCK_NONE"),
+                    SafetySetting("HARM_CATEGORY_HATE_SPEECH", "BLOCK_NONE"),
+                    SafetySetting("HARM_CATEGORY_SEXUALLY_EXPLICIT", "BLOCK_NONE"),
+                    SafetySetting("HARM_CATEGORY_DANGEROUS_CONTENT", "BLOCK_NONE")
                 )
             )
 
@@ -81,7 +87,8 @@ class DialectRepository {
             val part = candidate?.content?.parts?.find { it.inlineData != null && it.inlineData.mimeType.startsWith("audio/") }
             
             if (part?.inlineData?.data == null) {
-                throw Exception("No audio data returned from Gemini API. Check if your API key is correct and valid for the gemini-3.1-flash-tts-preview model.")
+                val reason = candidate?.finishReason ?: "UNKNOWN"
+                throw Exception("No audio data returned from Gemini API. (finishReason: $reason)\nCheck if your API key is correct and valid for the gemini-3.1-flash-tts-preview model.")
             }
 
             return part.inlineData.data
