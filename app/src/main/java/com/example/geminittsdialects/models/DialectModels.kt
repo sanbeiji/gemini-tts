@@ -104,6 +104,12 @@ object DialectData {
                     id = "es_mexico",
                     name = "Mexico",
                     prompt = "[Voice Style: Speak in a warm, polite, standard Mexican Spanish accent.] Speak with clear seseo (pronouncing 's', 'c', and 'z' as 's'), distinct melodic rising intonation at the end of phrases (el cantadito mexicano), and clear, crisp consonant articulation."
+                ),
+                Dialect(
+                    id = "es_spanglish",
+                    name = "Spanglish",
+                    prompt = "[Voice Style: Speak naturally blending American English and Spanish.] Deliver fluid Spanglish with casual code-switching, mixing Latin-American Spanish phonetics with American English seamlessly in cadence and vocabulary.",
+                    defaultText = "Hey bro, can you pass me the remote? El partido is about to start y no me lo quiero perder por nada."
                 )
             )
         ),
@@ -173,9 +179,15 @@ object DialectData {
                 ),
                 Dialect(
                     id = "zh_taiwan_heavy_southern",
-                    name = "Kaohsiung + Hoklo",
+                    name = "Kaohsiung+Minnan",
                     prompt = "[Voice Style: Speak extremely casually, off-the-cuff, like chatting with a close family member or childhood friend.]\nRead in a local, very down-to-earth, thick Southern Taiwanese Mandarin colloquial style (重度南部腔台灣國語) with strong Taiwanese (Minnan/Hokkien) substrate.\n- Sound like a friendly neighbor from Tainan or Kaohsiung speaking casual Mandarin.\n- Strongly dentalize retroflexes (zh, ch, sh -> z, c, s, e.g., 船 sounds like cuán, 睡 sounds like suì).\n- Use Minnan speech substrate pitch and rhythm. Syllable-final nasals \"eng\" and \"en\" can merge with \"ing\" and \"in\", or open slightly (e.g. 朋友 sounds like píngyǒu or péng-ǐou).\n- Do not use neutral/light tones (輕聲); give everything comfortable, rich Taiwanese tones.\n- If natural, blend f and h sounds gently (e.g., 飯 fàn sounds like huàn, 發生 fāshēng sounds like huāshēng).\n- Keep the cadence relaxed, friendly, and expressive, showing regional southern warmth.\n- Support seamless code-switching when English words (like \"friend\", \"lunch\") or Japanese loanwords (like \"便當\"/bentō) are integrated in the text, pronouncing them with characteristic Taiwanese English/Japanese-Taiwanese phonetics.",
                     defaultText = "哈囉 my friend! 今天天氣足好，要不要作夥去散步吃個 lunch, 順便買個便當 (bentō)?"
+                ),
+                Dialect(
+                    id = "zh_chinglish",
+                    name = "Chinglish",
+                    prompt = "[Voice Style: Speak in a heavy, natural Chinese-English bilingual cadence.] Deliver a mix of Mandarin and English (Chinglish), pronouncing English words with a strong Mandarin accent, shifting stress patterns, and blending Chinese particles seamlessly.",
+                    defaultText = "We should focus on the big picture, you know? 不要一直 drill down into the details, it's very inefficient 啦."
                 )
             )
         )
