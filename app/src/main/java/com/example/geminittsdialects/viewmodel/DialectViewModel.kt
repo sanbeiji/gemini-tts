@@ -10,6 +10,8 @@ import com.example.geminittsdialects.models.Dialect
 import com.example.geminittsdialects.models.DialectData
 import com.example.geminittsdialects.models.Language
 import com.example.geminittsdialects.models.UserSettings
+import com.example.geminittsdialects.models.VoiceStyle
+import com.example.geminittsdialects.models.VoiceStyleData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -45,6 +47,9 @@ class DialectViewModel(
     private val _isMale = MutableStateFlow<Boolean>(false) // Default to female (Kore)
     val isMale: StateFlow<Boolean> = _isMale.asStateFlow()
 
+    private val _selectedStyle = MutableStateFlow<VoiceStyle>(VoiceStyleData.styles.first())
+    val selectedStyle: StateFlow<VoiceStyle> = _selectedStyle.asStateFlow()
+
     private val _textToSynthesize = MutableStateFlow<String>(DialectData.languages.first().defaultText)
     val textToSynthesize: StateFlow<String> = _textToSynthesize.asStateFlow()
 
@@ -71,12 +76,17 @@ class DialectViewModel(
         if (firstDialect != null) {
             _selectedDialect.value = firstDialect
         }
-        // Pre-fill text box with default text for the selected language
-        _textToSynthesize.value = language.defaultText
+        // Pre-fill text box with default text for the selected dialect or language
+        _textToSynthesize.value = firstDialect?.defaultText ?: language.defaultText
     }
 
     fun onDialectSelected(dialect: Dialect) {
         _selectedDialect.value = dialect
+        _textToSynthesize.value = dialect.defaultText ?: _selectedLanguage.value.defaultText
+    }
+
+    fun onStyleSelected(style: VoiceStyle) {
+        _selectedStyle.value = style
     }
 
     fun onGenderSelected(isMale: Boolean) {
@@ -100,8 +110,8 @@ class DialectViewModel(
         }
     }
 
-    private fun getAudioCacheFile(text: String, dialectId: String, voiceName: String): File {
-        val hashInput = "${text}_${dialectId}_${voiceName}"
+    private fun getAudioCacheFile(text: String, dialectId: String, voiceName: String, styleId: String): File {
+        val hashInput = "${text}_${dialectId}_${voiceName}_${styleId}"
         val digest = MessageDigest.getInstance("MD5")
         val hashBytes = digest.digest(hashInput.toByteArray(Charsets.UTF_8))
         val hashString = hashBytes.joinToString("") { "%02x".format(it) }
@@ -128,16 +138,20 @@ class DialectViewModel(
 
             val voiceName = if (_isMale.value) "Puck" else "Kore"
             val dialect = _selectedDialect.value
-            val cacheFile = getAudioCacheFile(text, dialect.id, voiceName)
+            val style = _selectedStyle.value
+            val cacheFile = getAudioCacheFile(text, dialect.id, voiceName, style.id)
 
             try {
                 val audioBytes = if (cacheFile.exists()) {
                     cacheFile.readBytes()
                 } else {
+                    val styleInstruction = if (style.prompt.isNotBlank()) "\n${style.prompt}" else ""
+                    val combinedPrompt = "${dialect.prompt}$styleInstruction"
+
                     val base64Data = dialectRepository.generateSpeech(
                         apiKey = settings.apiKey,
                         text = text,
-                        dialectPrompt = dialect.prompt,
+                        dialectPrompt = combinedPrompt,
                         voiceName = voiceName
                     )
                     val decodedBytes = android.util.Base64.decode(base64Data, android.util.Base64.DEFAULT)

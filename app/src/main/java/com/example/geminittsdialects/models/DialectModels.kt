@@ -6,7 +6,8 @@ import kotlinx.serialization.Serializable
 data class Dialect(
     val id: String,
     val name: String,
-    val prompt: String
+    val prompt: String,
+    val defaultText: String? = null
 )
 
 @Serializable
@@ -47,7 +48,8 @@ object DialectData {
                 Dialect(
                     id = "en_nyc",
                     name = "NYC",
-                    prompt = "[Voice Style: Speak in a theatrical, classic New York City / Brooklyn working-class 'mobster' voice.] Speak with a tough, raspy, animated Brooklyn accent, dropping 'r's, shifting 'th' to 'd' or 't' (e.g., 'these' -> 'dese', 'thing' -> 'ting'), and using dramatic NY stress and cadence."
+                    prompt = "[Voice Style: Speak in a theatrical, classic New York City / Brooklyn working-class 'mobster' voice.] Speak with a tough, raspy, animated Brooklyn accent, dropping 'r's, shifting 'th' to 'd' or 't' (e.g., 'these' -> 'dese', 'thing' -> 'ting'), and using dramatic NY stress and cadence.",
+                    defaultText = "Yo, what's up buddy? We got a beautiful day ahead of us, so let's get out there and make the most of it, you know?"
                 ),
                 Dialect(
                     id = "en_texas",
@@ -57,7 +59,8 @@ object DialectData {
                 Dialect(
                     id = "en_surfer",
                     name = "California",
-                    prompt = "[Voice Style: Speak in a highly casual, laid-back California 'surfer dude' voice.] Deliver with a slow, relaxed, drawling cadence, slightly elongated vowels, and enthusiastic, breezy, informal intonation."
+                    prompt = "[Voice Style: Speak in a highly casual, laid-back California 'surfer dude' voice.] Deliver with a slow, relaxed, drawling cadence, slightly elongated vowels, and enthusiastic, breezy, informal intonation.",
+                    defaultText = "Hey dude! What a gorgeous day ahead, let's hit the road and make it totally epic."
                 ),
                 Dialect(
                     id = "en_australia",
@@ -77,7 +80,8 @@ object DialectData {
                 Dialect(
                     id = "en_shakespearean",
                     name = "Shakespearean",
-                    prompt = "[Voice Style: Speak in the style of an actor performing in a dramatic Shakespearean play. The speech should be highly emphatic, theatrical, and slightly exaggerated, delivered with a strong, projecting stage voice, rich Received Pronunciation (RP) vowels, and a dramatic, grand cadence.]"
+                    prompt = "[Voice Style: Speak in the style of an actor performing in a dramatic Shakespearean play. The speech should be highly emphatic, theatrical, and slightly exaggerated, delivered with a strong, projecting stage voice, rich Received Pronunciation (RP) vowels, and a dramatic, grand cadence.]",
+                    defaultText = "Hark, my noble friend! A most wondrous day lies before us; let us make the absolute most of this fleeting hour."
                 )
             )
         ),
@@ -170,9 +174,53 @@ object DialectData {
                 Dialect(
                     id = "zh_taiwan_heavy_southern",
                     name = "Kaohsiung + Hoklo",
-                    prompt = "[Voice Style: Speak extremely casually, off-the-cuff, like chatting with a close family member or childhood friend.]\nRead in a local, very down-to-earth, thick Southern Taiwanese Mandarin colloquial style (重度南部腔台灣國語) with strong Taiwanese (Minnan/Hokkien) substrate.\n- Sound like a friendly neighbor from Tainan or Kaohsiung speaking casual Mandarin.\n- Strongly dentalize retroflexes (zh, ch, sh -> z, c, s, e.g., 船 sounds like cuán, 睡 sounds like suì).\n- Use Minnan speech substrate pitch and rhythm. Syllable-final nasals \"eng\" and \"en\" can merge with \"ing\" and \"in\", or open slightly (e.g. 朋友 sounds like píngyǒu or péng-ǐou).\n- Do not use neutral/light tones (輕聲); give everything comfortable, rich Taiwanese tones.\n- If natural, blend f and h sounds gently (e.g., 飯 fàn sounds like huàn, 發生 fāshēng sounds like huāshēng).\n- Keep the cadence relaxed, friendly, and expressive, showing regional southern warmth."
+                    prompt = "[Voice Style: Speak extremely casually, off-the-cuff, like chatting with a close family member or childhood friend.]\nRead in a local, very down-to-earth, thick Southern Taiwanese Mandarin colloquial style (重度南部腔台灣國語) with strong Taiwanese (Minnan/Hokkien) substrate.\n- Sound like a friendly neighbor from Tainan or Kaohsiung speaking casual Mandarin.\n- Strongly dentalize retroflexes (zh, ch, sh -> z, c, s, e.g., 船 sounds like cuán, 睡 sounds like suì).\n- Use Minnan speech substrate pitch and rhythm. Syllable-final nasals \"eng\" and \"en\" can merge with \"ing\" and \"in\", or open slightly (e.g. 朋友 sounds like píngyǒu or péng-ǐou).\n- Do not use neutral/light tones (輕聲); give everything comfortable, rich Taiwanese tones.\n- If natural, blend f and h sounds gently (e.g., 飯 fàn sounds like huàn, 發生 fāshēng sounds like huāshēng).\n- Keep the cadence relaxed, friendly, and expressive, showing regional southern warmth.\n- Support seamless code-switching when English words (like \"friend\", \"lunch\") or Japanese loanwords (like \"便當\"/bentō) are integrated in the text, pronouncing them with characteristic Taiwanese English/Japanese-Taiwanese phonetics.",
+                    defaultText = "哈囉 my friend! 今天天氣足好，要不要作夥去散步吃個 lunch, 順便買個便當 (bentō)?"
                 )
             )
+        )
+    )
+}
+
+@Serializable
+data class VoiceStyle(
+    val id: String,
+    val name: String,
+    val prompt: String,
+    val emoji: String
+)
+
+object VoiceStyleData {
+    val styles = listOf(
+        VoiceStyle(
+            id = "neutral",
+            name = "Default",
+            prompt = "",
+            emoji = "😐"
+        ),
+        VoiceStyle(
+            id = "excited",
+            name = "Excited",
+            prompt = "[Voice Style: Speak with high energy, enthusiasm, and a fast, lively pace.]",
+            emoji = "🤩"
+        ),
+        VoiceStyle(
+            id = "whispering",
+            name = "Whisper",
+            prompt = "[Voice Style: Speak in a soft, quiet, breathy whisper close to the microphone.]",
+            emoji = "🤫"
+        ),
+        VoiceStyle(
+            id = "melancholic",
+            name = "Sad",
+            prompt = "[Voice Style: Speak slowly, with heavy pauses, downcast intonation, and a sad, melancholic tone.]",
+            emoji = "😢"
+        ),
+        VoiceStyle(
+            id = "stern",
+            name = "Stern",
+            prompt = "[Voice Style: Speak with a sharp, firm, assertive, and slightly angry or stern tone.]",
+            emoji = "😠"
         )
     )
 }

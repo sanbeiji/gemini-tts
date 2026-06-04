@@ -6,7 +6,7 @@ An Android demonstration application showcasing the multimodal Text-to-Speech (T
 
 ## 🌟 Features
 
-* **Large Text Input Box**: Pre-filled with natural sample text (2 sentences) tailored to the selected language. Users can freely type their own custom sentences.
+* **Large Text Input Box**: Pre-filled with natural sample text (2 sentences) tailored to the selected language. Selecting certain dialects automatically updates the input box to a specialized script showcasing localized pronunciation, vocabulary, and code-switching.
 * **Language Selector**: Supports 5 languages:
   - English
   - Spanish
@@ -21,8 +21,14 @@ An Android demonstration application showcasing the multimodal Text-to-Speech (T
   - **Spanish**: Madrid (Castilian), Barcelona (Catalan substrate), Mexico.
   - **German**: Berlin (Berlinerisch), Vienna (Wienerisch).
   - **French**: Paris (Standard metropolitan), Quebec (Québécois).
-  - **Chinese (Mandarin/Sinitic)**: Beijing Mandarin (Erhua), Shanghai Mandarin (Wu substrate), Cantonese (standard Yue readings), Taiwanese Mandarin (urban Taipei style), Taiwanese Southern Accent, Taiwanese Southern Heavy + Minnan substrate.
-* **Instant Local Cache**: Compares MD5 hashes of text inputs, dialect IDs, and voice configurations to save and reload synthesized PCM audio from local cache directory (`dialect_tts_cache`), minimizing API usage.
+  - **Chinese (Mandarin/Sinitic)**: Beijing Mandarin (Erhua), Shanghai Mandarin (Wu substrate), Cantonese (standard Yue readings), Taiwanese Mandarin (urban Taipei style), Taiwanese Southern Accent, Taiwanese Southern Heavy + Minnan substrate (supports English/Japanese code-switching).
+* **Tone & Emotion Selector**: Dynamic voice style modifiers that alter the model's delivery:
+  - **Default**: Neutral reading.
+  - **Excited**: High energy, fast pace, enthusiastic lilt.
+  - **Whisper**: Soft, breathy, quiet, conspiratorial whisper close to the microphone.
+  - **Sad**: Slow, downcast, melancholic cadence with heavy pauses.
+  - **Stern**: Sharp, firm, assertive, and slightly angry delivery.
+* **Instant Local Cache**: Compares MD5 hashes of text inputs, dialect IDs, voice configurations, and style IDs to save and reload synthesized PCM audio from local cache directory (`dialect_tts_cache`), minimizing API usage.
 * **Micro-Animated UI**: Displays dynamic soundwave frequency indicators (`SpeechWaves`) that pulse rhythmically during voice playback.
 
 ---

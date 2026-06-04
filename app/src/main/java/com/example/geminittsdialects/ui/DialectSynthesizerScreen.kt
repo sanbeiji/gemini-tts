@@ -45,6 +45,7 @@ fun DialectSynthesizerScreen(
     val selectedDialect by viewModel.selectedDialect.collectAsState()
     val isMale by viewModel.isMale.collectAsState()
     val textToSynthesize by viewModel.textToSynthesize.collectAsState()
+    val selectedStyle by viewModel.selectedStyle.collectAsState()
 
     var showKeyDialog by remember { mutableStateOf(false) }
     var showInfoDialog by remember { mutableStateOf(false) }
@@ -298,6 +299,47 @@ fun DialectSynthesizerScreen(
                                 colors = FilterChipDefaults.filterChipColors(
                                     selectedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f),
                                     selectedLabelColor = MaterialTheme.colorScheme.secondary
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+
+            // Tone & Emotion Selector
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = "4. Tone & Emotion",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    val styles = com.example.geminittsdialects.models.VoiceStyleData.styles
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        styles.forEach { style ->
+                            val isSelected = selectedStyle.id == style.id
+                            FilterChip(
+                                selected = isSelected,
+                                onClick = { viewModel.onStyleSelected(style) },
+                                label = {
+                                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                        Text(style.emoji)
+                                        Text(style.name)
+                                    }
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
+                                    selectedLabelColor = MaterialTheme.colorScheme.tertiary
                                 )
                             )
                         }

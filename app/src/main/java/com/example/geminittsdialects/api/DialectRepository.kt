@@ -9,6 +9,7 @@ import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
+import io.ktor.client.statement.bodyAsText
 import kotlinx.serialization.json.Json
 
 class DialectRepository {
@@ -64,10 +65,13 @@ class DialectRepository {
             val fetchModel = "gemini-3.1-flash-tts-preview"
             val url = "https://generativelanguage.googleapis.com/v1beta/models/${fetchModel}:generateContent?key=$apiKey"
 
-            val response: GeminiResponse = client.post(url) {
+            val httpResponse = client.post(url) {
                 contentType(ContentType.Application.Json)
                 setBody(requestBody)
-            }.body()
+            }
+            val responseText = httpResponse.bodyAsText()
+            android.util.Log.d("GeminiTTS", "Raw Response: $responseText")
+            val response = jsonConfig.decodeFromString<GeminiResponse>(responseText)
 
             if (response.error != null) {
                 throw Exception(response.error.message)
