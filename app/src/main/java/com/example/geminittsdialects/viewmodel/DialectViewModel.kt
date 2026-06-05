@@ -145,8 +145,7 @@ class DialectViewModel(
                 val audioBytes = if (cacheFile.exists()) {
                     cacheFile.readBytes()
                 } else {
-                    val languageId = _selectedLanguage.value.id
-                    val (styleText, tag) = getPromptAndTagForStyle(style, languageId)
+                    val (styleText, tag) = getPromptAndTagForStyle(style, dialect.id)
 
                     val combinedPrompt = if (styleText.isNotBlank()) {
                         "${dialect.prompt}\nAdditionally, adjust your voice to: $styleText"
@@ -176,16 +175,18 @@ class DialectViewModel(
 
     private fun getPromptAndTagForStyle(
         style: VoiceStyle,
-        languageId: String
+        dialectId: String
     ): Pair<String, String> {
         return when (style.id) {
             "whispering" -> {
-                when (languageId) {
-                    "en", "de" -> Pair("", "[whispers] ")
-                    "es" -> Pair("", "[gently] ")
-                    "fr" -> Pair("", "[calmly] ")
-                    "zh" -> Pair("", "[softly] ")
-                    else -> Pair("", "[whispers] ")
+                if (dialectId.startsWith("zh_") || dialectId == "en_taiwanese") {
+                    Pair("", "[softly] ")
+                } else if (dialectId.startsWith("es_")) {
+                    Pair("", "[gently] ")
+                } else if (dialectId.startsWith("fr_")) {
+                    Pair("", "[calmly] ")
+                } else {
+                    Pair("", "[whispers] ")
                 }
             }
             "excited" -> Pair("Speak with high energy, enthusiasm, and a fast, lively pace.", "[excitedly] ")
