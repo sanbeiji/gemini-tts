@@ -48,7 +48,7 @@ object DialectData {
                 Dialect(
                     id = "en_nyc",
                     name = "NYC",
-                    prompt = "[Voice Style: Speak in a theatrical, classic New York City / Brooklyn working-class 'mobster' voice.] Speak with a tough, raspy, animated Brooklyn accent, dropping 'r's, shifting 'th' to 'd' or 't' (e.g., 'these' -> 'dese', 'thing' -> 'ting'), and using dramatic NY stress and cadence.",
+                    prompt = "[Voice Style: Speak in a theatrical, classic New York City / Brooklyn working-class voice.] Speak with a tough, raspy, animated Brooklyn accent, dropping 'r's, shifting 'th' to 'd' or 't' (e.g., 'these' -> 'dese', 'thing' -> 'ting'), and using dramatic NY stress and cadence.",
                     defaultText = "Yo, what's up buddy? We got a beautiful day ahead of us, so let's get out there and make the most of it, you know?"
                 ),
                 Dialect(
@@ -180,15 +180,17 @@ object DialectData {
                 Dialect(
                     id = "zh_taiwan_heavy_southern",
                     name = "Kaohsiung+Minnan",
-                    prompt = "[Voice Style: Speak extremely casually, off-the-cuff, like chatting with a close family member or childhood friend.]\nRead in a local, very down-to-earth, thick Southern Taiwanese Mandarin colloquial style (重度南部腔台灣國語) with strong Taiwanese (Minnan/Hokkien) substrate.\n- Sound like a friendly neighbor from Tainan or Kaohsiung speaking casual Mandarin.\n- Strongly dentalize retroflexes (zh, ch, sh -> z, c, s, e.g., 船 sounds like cuán, 睡 sounds like suì).\n- Use Minnan speech substrate pitch and rhythm. Syllable-final nasals \"eng\" and \"en\" can merge with \"ing\" and \"in\", or open slightly (e.g. 朋友 sounds like píngyǒu or péng-ǐou).\n- Do not use neutral/light tones (輕聲); give everything comfortable, rich Taiwanese tones.\n- If natural, blend f and h sounds gently (e.g., 飯 fàn sounds like huàn, 發生 fāshēng sounds like huāshēng).\n- Keep the cadence relaxed, friendly, and expressive, showing regional southern warmth.\n- Support seamless code-switching when English words (like \"friend\", \"lunch\") or Japanese loanwords (like \"便當\"/bentō) are integrated in the text, pronouncing them with characteristic Taiwanese English/Japanese-Taiwanese phonetics.",
+                    prompt = "[Voice Style: Speak extremely casually, off-the-cuff, like chatting with a close family member or childhood friend.]\nRead in a local, very down-to-earth, thick Southern Taiwanese Mandarin colloquial style (重度南部腔台灣國語) with strong Taiwanese (Minnan/Hokkien) substrate.\n- Sound like a friendly neighbor from Tainan or Kaohsiung speaking casual Mandarin.\n- Strongly dentalize retroflexes (zh, ch, sh -> z, c, s, e.g., 船 sounds like cuán, 睡 sounds like suì).\n- Use Minnan speech substrate pitch and rhythm. Syllable-final nasals \"eng\" and \"en\" can merge with \"ing\" and \"in\", or open slightly (e.g. 朋友 sounds like píngyǒu or péng-ǐou).\n- Do not use neutral/light tones (輕聲); give everything comfortable, rich Taiwanese tones.\n- If natural, blend f and h sounds gently (e.g., 飯 fàn sounds like huàn, 發生 fāshēng sounds like huāshēng).\n- Keep the cadence relaxed, friendly, and expressive, showing regional southern warmth.",
                     defaultText = "哈囉 my friend! 今天天氣足好，要不要作夥去散步吃個 lunch, 順便買個便當 (bentō)?"
                 ),
                 Dialect(
                     id = "zh_chinglish",
                     name = "Chinglish",
-                    prompt = "[Voice Style: Speak in a heavy, natural Chinese-English bilingual cadence.] Deliver a mix of Mandarin and English (Chinglish), pronouncing English words with a strong Mandarin accent, shifting stress patterns, and blending Chinese particles seamlessly.",
-                    defaultText = "We should focus on the big picture, you know? 不要一直 drill down into the details, it's very inefficient 啦."
+                    prompt = "[Voice Style: Speak casually and cheerfully.] Read the text exactly as written with a natural, relaxed, and highly expressive cadence.",
+                    defaultText = "We should focus on the big picture, you know? 不要太在意那些 details, let's keep it simple 啦."
                 )
+
+
             )
         )
     )
@@ -219,7 +221,7 @@ object VoiceStyleData {
         VoiceStyle(
             id = "whispering",
             name = "Whisper",
-            prompt = "[Voice Style: Speak in a soft, quiet, breathy whisper close to the microphone.]",
+            prompt = "[Voice Style: Speak very quietly and softly, like a gentle whisper.]",
             emoji = "🤫"
         ),
         VoiceStyle(

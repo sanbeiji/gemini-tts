@@ -145,12 +145,18 @@ class DialectViewModel(
                 val audioBytes = if (cacheFile.exists()) {
                     cacheFile.readBytes()
                 } else {
-                    val styleInstruction = if (style.prompt.isNotBlank()) "\n${style.prompt}" else ""
-                    val combinedPrompt = "${dialect.prompt}$styleInstruction"
+                    val languageId = _selectedLanguage.value.id
+                    val (styleText, tag) = getPromptAndTagForStyle(style, languageId)
+
+                    val combinedPrompt = if (styleText.isNotBlank()) {
+                        "${dialect.prompt}\nAdditionally, adjust your voice to: $styleText"
+                    } else {
+                        dialect.prompt
+                    }
 
                     val base64Data = dialectRepository.generateSpeech(
                         apiKey = settings.apiKey,
-                        text = text,
+                        text = "$tag$text",
                         dialectPrompt = combinedPrompt,
                         voiceName = voiceName
                     )
@@ -165,6 +171,27 @@ class DialectViewModel(
             } catch (e: Exception) {
                 _uiState.value = DialectUiState.Error(e.message ?: "An unexpected error occurred during synthesis.")
             }
+        }
+    }
+
+    private fun getPromptAndTagForStyle(
+        style: VoiceStyle,
+        languageId: String
+    ): Pair<String, String> {
+        return when (style.id) {
+            "whispering" -> {
+                when (languageId) {
+                    "en", "de" -> Pair("", "[whispers] ")
+                    "es" -> Pair("", "[gently] ")
+                    "fr" -> Pair("", "[calmly] ")
+                    "zh" -> Pair("", "[softly] ")
+                    else -> Pair("", "[whispers] ")
+                }
+            }
+            "excited" -> Pair("Speak with high energy, enthusiasm, and a fast, lively pace.", "[excitedly] ")
+            "melancholic" -> Pair("Speak slowly, with heavy pauses, downcast intonation, and a sad, melancholic tone.", "[sadly] ")
+            "stern" -> Pair("Speak with a sharp, firm, assertive, and slightly angry or stern tone.", "[serious] ")
+            else -> Pair("", "")
         }
     }
 

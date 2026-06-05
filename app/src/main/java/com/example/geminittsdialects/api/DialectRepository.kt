@@ -88,7 +88,8 @@ class DialectRepository {
             
             if (part?.inlineData?.data == null) {
                 val reason = candidate?.finishReason ?: "UNKNOWN"
-                throw Exception("No audio data returned from Gemini API. (finishReason: $reason)\nCheck if your API key is correct and valid for the gemini-3.1-flash-tts-preview model.")
+                val textPart = candidate?.content?.parts?.find { it.text != null }?.text ?: "No text"
+                throw Exception("No audio data returned. (finishReason: $reason)\nText response: $textPart")
             }
 
             return part.inlineData.data
